@@ -1,9 +1,26 @@
+:root {
+    --background-color: #F2F0EA; /* Cream */
+    --navbar-color: #A8D5E3; /* Teal */
+    --link-color: #C05746; /* Rust Red */
+    --button-primary-color: #C05746; /* Rust Red */
+    --button-secondary-color: #225E68; /* Deep Teal */
+    --hover-link-color: #E76D54; /* Orange Hue */
+    --hover-button-primary: #E76D54; /* Darker Coral */
+
+    --card-background-color: #FFFFFF; /* Light gray background color */
+    --card-border-color: #ccc; /* Thin border */
+    --text-color: #000; /* Black */
+    --footer-background-color: rgba(0, 0, 0, 0.7); /* Footer background */
+    --footer-link-hover-color: #E76D54; /* Footer link hover color */
+}
+
 html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
 }
 
 body {
+    background-color: var(--background-color);
     font-family: "PT Serif", serif; /* Set PT Serif as the font for body text */
     font-weight: 400; /* Regular weight */
     font-style: normal;
@@ -14,13 +31,32 @@ body {
     -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
 }
 
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--hover-link-color);
+    /* transition: color 0.5s ease; */
+}
+
+.btn-primary {
+    background-color: var(--button-primary-color) !important;
+    border-color: var(--button-primary-color) !important;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: var(--hover-button-primary) !important;
+    border-color: var(--hover-button-primary) !important;
+}
+
+
 /* Adjust font size for smaller devices */
 @media (max-width: 767.98px) {
     body {
         font-size: 1.2rem; /* Smaller font size for phones */
     }
 }
-
 
 section {
     padding: 80px 0;
@@ -41,7 +77,6 @@ section {
 
 /* Home Section Specific Styles */
 #aboutme {
-    background-color: #ffffff;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -50,46 +85,34 @@ section {
     padding-top: 60px;
 }
 
-
 /* About, Research, and Contact Sections without flexbox */
 #publications, #talks {
     scroll-margin-top: 70px;
-    background-color: #ffffff; /*Optional overlay for readability*/
     padding: 50px 0; /* Space inside sections */
     min-height: 100vh;
-    /* display: flex; */
 }
 
 #contact {
     scroll-margin-top: 70px;
-    background-color: #ffffff; /* Optional overlay for readability */
     padding: 50px 0; /* Space inside sections */
-    /* height: 100vh; */
-    /* display: flex; */
 }
 
-
-.events{
+.events {
     padding-left: 10pt;
 }
 
-.event-list{
+.event-list {
     padding-top: 10pt;
     padding-bottom: 20pt;
 }
 
-
-
 .card {
-    background-color: #f5f5f5; /* Light gray background color */
-    border: 1px solid #ccc; /* Thin border */
+    background-color: var(--card-background-color);
+    border: 1px solid var(--card-border-color);
     border-radius: 0.5rem;
-    /* backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); For Safari compatibility */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding-left: 20px;
     position: relative; /* Ensure positioning context */
-    /* z-index: 1; Adjust as necessary */
 }
 
 .card-body {
@@ -99,19 +122,21 @@ section {
 .card-title {
     font-family: "Raleway", serif;
     font-size: 1.4rem;
-    /* font-weight: bold; */
     line-height: 1.5rem;
     font-weight: 500;
 }
 
-.card-title a{
+.card-title a {
     padding-left: 10px;
+    color: var(--link-color) !important
+}
+.card-title a:hover {
+    color: var(--hover-link-color) !important;
 }
 
 .card-text-coauthors {
     margin-bottom: 0rem;
     font-size: 1.3rem;
-    /* padding-left: 20px; */
 }
 
 .card-text-summary {
@@ -139,6 +164,9 @@ section {
     }
 }
 
+.navbar-custom {
+    background-color: var(--navbar-color);
+}
 
 /* Navbar styling */
 .navbar {
@@ -150,8 +178,6 @@ section {
 .navbar-brand {
     font-size: 2rem; /* Slightly larger font size for the brand */
     font-family: 'PT Serif', serif;
-    /* text-decoration: underline; */
-    /* border-bottom: #000; */
 }
 
 /* Navbar items spacing */
@@ -164,25 +190,16 @@ section {
     font-size: 1.3rem; /* Slightly larger font size for nav links */
 }
 
-/* Active nav item styling */
-.navbar-nav .nav-link.active {
-    color: #007bff; /* Color for the active link */
-    /*font-weight: bold;  Optional: Makes the active link bold */
-}
-
-
 /* Navbar Collapse Styles */
 .navbar-collapse {
     position: fixed; /* Makes the dropdown overlay the content */
     top: 74px; /* Adjust based on your navbar height */
     left: 0;
     width: 100%;
-    background-color: #f8f9fa; /* Semi-transparent background */
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); Slight shadow to the bottom */
+    background-color: var(--navbar-color);
     z-index: 1050; /* Higher than the content */
     overflow-y: auto; /* Allows scrolling if content overflows */
 }
-
 
 /* Ensure that desktop view remains unaffected */
 @media (min-width: 992px) {
@@ -191,8 +208,6 @@ section {
         display: flex; /* Show normally in desktop mode */
     }
 }
-
-
 
 .profile-pic {
     display: block;
@@ -203,7 +218,7 @@ section {
     object-fit: cover;
     margin-bottom: 40px; /* Space between image and icons */
     margin-top: 50px; /* Ensures some distance from the top on larger screens */
-    border: 2px solid #ccc; /* Thin border around the picture */
+    border: 2px solid var(--card-border-color); /* Thin border around the picture */
 }
 
 @media (max-width: 767.98px) { /* Small devices */
@@ -222,27 +237,22 @@ section {
     }
 }
 
-
 .paper-title {
     font-weight: bold;
 }
 
 .authors a {
     text-decoration: none;
-    color: #007bff; /* Bootstrap primary color */
 }
 
 .paper-links a {
     text-decoration: none;
-    color: #007bff; /* Bootstrap primary color */
     margin-right: 10px;
 }
 
 .paper-links i {
     margin-right: 5px;
 }
-
-
 
 .network-icons {
     list-style: none;
@@ -257,16 +267,15 @@ section {
 }
 
 .network-icons a {
-    color: #333;
+    color: var(--text-color);
     text-decoration: none;
     font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
 .network-icons a:hover {
-    color: #007bff;
+    color: var(--hover-link-color);
 }
-
 
 .article-container {
     display: flex;
@@ -280,10 +289,9 @@ section {
     padding: 15px;    /* Small padding on all sides */
     font-family: 'Garamond', serif; /* Good font for readability */
     line-height: 1.6; /* Improves readability */
-    color: #000; /* Text color set to black */
+    color: var(--text-color); /* Text color set to black */
     text-align: left;
 }
-
 
 /* Adjust network icon size for mobile */
 @media (max-width: 767.98px) {
@@ -304,27 +312,24 @@ section {
     text-align: center; /* Center the text inside the button */
 }
 
-
 footer {
     padding-top: 1rem;
     padding-bottom: 0.2rem;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
+    background-color: var(--footer-background-color);
     text-align: center;
+    color: white;
     a {
-        color: #fff; /* Default link color */
+        color: white;
     }
-
     a:hover {
-        color: #92e2f0; /* Hover link color */
+        color: var(--footer-link-hover-color); /* Hover link color */
     }
 }
 
 .scroll-to-top {
-    color: #fff;
     text-decoration: underline;
 }
 
 .scroll-to-top:hover {
-    color: #92e2f0;
+    color: var(--footer-link-hover-color);
 }
